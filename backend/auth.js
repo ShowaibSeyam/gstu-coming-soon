@@ -8,7 +8,9 @@ const { client, db, connectDb } = require("./database/connection");
 
 const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL,
-    trustedOrigins: ["http://localhost:3000"],
+    trustedOrigins: ["http://localhost:3000",
+        process.env.FRONTEND_URL,
+    ],
     database: mongodbAdapter(db, {
         client, // optional: enables transactions
     }),

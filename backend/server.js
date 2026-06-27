@@ -10,7 +10,15 @@ const { auth, connectDb, db } = require("./auth");
 const { toNodeHandler, fromNodeHeaders } = require("better-auth/node");
 
 // ── Middleware ──────────────────────────────────────────────────────
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      process.env.FRONTEND_URL,
+    ],
+    credentials: true,
+  })
+);
 app.all("/api/auth/*path", toNodeHandler(auth));
 app.use(express.json());
 
