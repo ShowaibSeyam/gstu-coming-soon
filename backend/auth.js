@@ -4,7 +4,7 @@ const { admin: adminPlugin } = require("better-auth/plugins");
 require("dotenv").config();
 
 // Import the connected client and db from our new database module
-const { client, db, connectDb } = require("../database/connection");
+const { client, db, connectDb } = require("./database/connection");
 
 const auth = betterAuth({
     baseURL: process.env.BETTER_AUTH_URL,

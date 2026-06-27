@@ -28,7 +28,7 @@ function toOid(id) {
   try { return new ObjectId(id); } catch { return null; }
 }
 
-const { initDb } = require("../database/init");
+const { initDb } = require("./database/init");
 
 // ── Role Middleware ──────────────────────────────────────────────────
 async function requireRole(...allowedRoles) {
@@ -44,7 +44,7 @@ async function requireRole(...allowedRoles) {
 
       const user = session.user;
       const role = user.role || "student";
-      
+
       if (!allowedRoles.includes(role)) {
         return res.status(403).json({ error: `Forbidden — requires: ${allowedRoles.join(" or ")}` });
       }
@@ -114,7 +114,7 @@ app.post("/api/library/books/reserve", async (req, res) => {
   if (!book.available) return res.status(400).json({ error: "Book is already reserved" });
   const returnDate = new Date();
   returnDate.setDate(returnDate.getDate() + 14);
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const dueDate = `${months[returnDate.getMonth()]} ${returnDate.getDate()}`;
   await db.collection("books").updateOne({ title }, { $set: { available: false, dueDate } });
   const updated = await db.collection("books").findOne({ title });
