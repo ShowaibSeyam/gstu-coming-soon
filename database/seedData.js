@@ -1,0 +1,138 @@
+const SEED = {
+  syllabusItems: [
+    { code: "CS301", name: "Data Structures & Algorithms", semester: "Semester 3", updated: "Feb 2026" },
+    { code: "CS302", name: "Database Management Systems",  semester: "Semester 3", updated: "Jan 2026" },
+    { code: "CS401", name: "Operating Systems",            semester: "Semester 4", updated: "Mar 2026" },
+    { code: "CS402", name: "Computer Networks",            semester: "Semester 4", updated: "Mar 2026" },
+    { code: "CS501", name: "Artificial Intelligence",      semester: "Semester 5", updated: "Apr 2026" },
+    { code: "CS502", name: "Machine Learning",             semester: "Semester 5", updated: "Apr 2026" },
+  ],
+  pyqItems: [
+    { subject: "Data Structures",       year: "2025", exam: "Final",   pages: 8  },
+    { subject: "Database Systems",      year: "2025", exam: "Midterm", pages: 6  },
+    { subject: "Operating Systems",     year: "2024", exam: "Final",   pages: 10 },
+    { subject: "Computer Networks",     year: "2024", exam: "Final",   pages: 9  },
+    { subject: "Artificial Intelligence", year: "2023", exam: "Final", pages: 7  },
+  ],
+  ebookItems: [
+    { title: "Introduction to Algorithms",  author: "CLRS",              type: "Textbook",  size: "12 MB" },
+    { title: "Clean Code",                  author: "Robert C. Martin",  type: "Reference", size: "4 MB"  },
+    { title: "The Pragmatic Programmer",    author: "Hunt & Thomas",     type: "Reference", size: "5 MB"  },
+    { title: "Computer Networks",           author: "Tanenbaum",         type: "Textbook",  size: "18 MB" },
+    { title: "Database Systems Concepts",   author: "Silberschatz",      type: "Textbook",  size: "22 MB" },
+  ],
+  courses: [
+    { code: "CS301", name: "Data Structures",   credits: 4, instructor: "Dr. Ahmed Rahman",  slots: 30, enrolled: 27 },
+    { code: "CS302", name: "Database Systems",  credits: 3, instructor: "Prof. Nadia Islam",  slots: 35, enrolled: 35 },
+    { code: "CS401", name: "Operating Systems", credits: 4, instructor: "Dr. Karim Hossain", slots: 40, enrolled: 31 },
+    { code: "CS402", name: "Computer Networks", credits: 3, instructor: "Prof. Sara Begum",  slots: 30, enrolled: 22 },
+    { code: "CS501", name: "AI Fundamentals",   credits: 3, instructor: "Dr. Tanvir Ali",    slots: 25, enrolled: 18 },
+  ],
+  feeItems: [
+    { label: "Tuition Fee (Per Semester)", amount: "৳ 45,000", status: "Due: June 15, 2026",  paid: false },
+    { label: "Library Fee (Annual)",       amount: "৳ 2,500",  status: "Paid on Jan 10, 2026", paid: true  },
+    { label: "Lab Fee",                    amount: "৳ 5,000",  status: "Due: June 15, 2026",  paid: false },
+    { label: "Examination Fee",            amount: "৳ 3,000",  status: "Paid on Mar 5, 2026",  paid: true  },
+  ],
+  events: [
+    { date: "May 10",  label: "Mid-term Exams Begin",          type: "exam"     },
+    { date: "May 25",  label: "Last Day to Drop Courses",      type: "deadline" },
+    { date: "June 1",  label: "Summer Recess Begins",          type: "holiday"  },
+    { date: "June 15", label: "Fee Payment Deadline",          type: "deadline" },
+    { date: "July 5",  label: "Final Exams Begin",             type: "exam"     },
+    { date: "July 25", label: "Semester Ends",                 type: "holiday"  },
+  ],
+  notices: [
+    { title: "Mid-term Examination Schedule Released",          date: "Apr 28, 2026", urgent: true  },
+    { title: "Registration for Elective Courses Open",         date: "Apr 25, 2026", urgent: false },
+    { title: "Campus Network Maintenance – May 3 (12AM–4AM)", date: "Apr 24, 2026", urgent: true  },
+    { title: "Convocation Ceremony 2026 – Volunteers Needed",  date: "Apr 20, 2026", urgent: false },
+    { title: "Library Extended Hours During Exam Season",      date: "Apr 18, 2026", urgent: false },
+  ],
+  digitalResources: [
+    { name: "IEEE Xplore",     desc: "Engineering & technology journals",      url: "https://ieeexplore.ieee.org",            tags: ["Engineering", "CS"] },
+    { name: "Google Scholar",  desc: "Broad academic search engine",           url: "https://scholar.google.com",             tags: ["All Fields"]        },
+    { name: "JSTOR",           desc: "Journals, books & primary sources",      url: "https://www.jstor.org",                  tags: ["Humanities","Science"] },
+    { name: "ScienceDirect",   desc: "Elsevier's scientific research database",url: "https://www.sciencedirect.com",          tags: ["Science","Medicine"]  },
+    { name: "arXiv",           desc: "Preprint server for STEM disciplines",   url: "https://arxiv.org",                      tags: ["CS","Physics","Math"] },
+    { name: "PubMed",          desc: "Biomedical and life sciences literature", url: "https://pubmed.ncbi.nlm.nih.gov",       tags: ["Biology","Medicine"]  },
+  ],
+  books: [
+    { title: "Introduction to Algorithms", author: "CLRS",              available: true,  dueDate: null,    copies: 3 },
+    { title: "Clean Code",                 author: "Robert C. Martin",  available: false, dueDate: "May 8", copies: 2 },
+    { title: "Computer Networks",          author: "Tanenbaum",         available: true,  dueDate: null,    copies: 4 },
+    { title: "Discrete Mathematics",       author: "Rosen",             available: true,  dueDate: null,    copies: 2 },
+    { title: "Design Patterns",            author: "Gang of Four",      available: false, dueDate: "May 12",copies: 1 },
+  ],
+  journals: [
+    { name: "ACM Computing Surveys",                          impact: 14.3, publisher: "ACM",    access: "Full"     },
+    { name: "IEEE Transactions on Software Engineering",      impact: 9.7,  publisher: "IEEE",   access: "Full"     },
+    { name: "Journal of Machine Learning Research",           impact: 6.5,  publisher: "JMLR",   access: "Full"     },
+    { name: "Nature Machine Intelligence",                    impact: 25.9, publisher: "Nature", access: "Abstract" },
+    { name: "Communications of the ACM",                      impact: 11.2, publisher: "ACM",    access: "Full"     },
+  ],
+  existingTickets: [
+    { ticketId: "TKT-001", issue: "Unable to access student portal",         status: "Resolved",    created: "Apr 25", priority: "High"   },
+    { ticketId: "TKT-002", issue: "Campus Wi-Fi not connecting in Lab 3",    status: "In Progress", created: "Apr 27", priority: "Medium" },
+    { ticketId: "TKT-003", issue: "Email account locked out",                status: "Open",        created: "Apr 28", priority: "High"   },
+  ],
+  scholarships: [
+    { name: "Merit Scholarship 2026",   deadline: "May 30, 2026",  amount: "৳ 50,000", cgpa: "3.7+", status: "Open"   },
+    { name: "Need-Based Financial Aid", deadline: "June 10, 2026", amount: "৳ 30,000", cgpa: "Any",  status: "Open"   },
+    { name: "Research Grant – CS Dept", deadline: "May 15, 2026",  amount: "৳ 20,000", cgpa: "3.5+", status: "Open"   },
+    { name: "Sports Excellence Award",  deadline: "May 20, 2026",  amount: "৳ 15,000", cgpa: "Any",  status: "Closed" },
+  ],
+  mhResources: [
+    { title: "Student Counselling Center", desc: "Free 1-on-1 sessions with a licensed counsellor.", url: "#", iconName: "Heart",  color: "#10b981" },
+    { title: "Peer Support Network",       desc: "Connect with trained student volunteers.",         url: "#", iconName: "Phone",  color: "#3b82f6" },
+    { title: "Stress Workshop",            desc: "Weekly group sessions every Thursday, 4–5 PM.",   url: "#", iconName: "Clock",  color: "#8b5cf6" },
+    { title: "Crisis Helpline (24/7)",     desc: "Call +880-1700-000-999 for urgent support.",       url: "#", iconName: "Mail",   color: "#ef4444" },
+  ],
+  alumni: [
+    { name: "Farhan Ahmed",  batch: "2020", role: "Software Engineer",  company: "Google",    location: "USA",        avatar: "FA" },
+    { name: "Sadia Islam",   batch: "2019", role: "Data Scientist",     company: "Microsoft", location: "Canada",     avatar: "SI" },
+    { name: "Rafiq Hassan",  batch: "2021", role: "Product Manager",    company: "Shopify",   location: "Bangladesh", avatar: "RH" },
+    { name: "Nusrat Jahan",  batch: "2018", role: "ML Engineer",        company: "OpenAI",    location: "USA",        avatar: "NJ" },
+    { name: "Karim Uddin",   batch: "2022", role: "Backend Dev",        company: "bKash",     location: "Bangladesh", avatar: "KU" },
+    { name: "Mitu Roy",      batch: "2020", role: "UX Designer",        company: "Figma",     location: "Remote",     avatar: "MR" },
+  ],
+  jobs: [
+    { title: "Junior Software Engineer",    company: "Brain Station 23", type: "Full-time",  deadline: "May 15", location: "Dhaka" },
+    { title: "Data Analyst Intern",         company: "BJIT Group",       type: "Internship", deadline: "May 10", location: "Dhaka" },
+    { title: "Frontend Developer",          company: "Chaldal",          type: "Full-time",  deadline: "May 20", location: "Dhaka" },
+    { title: "Machine Learning Intern",     company: "Pathao",           type: "Internship", deadline: "May 8",  location: "Dhaka" },
+    { title: "Product Manager Associate",   company: "Shohoz",           type: "Full-time",  deadline: "June 1", location: "Dhaka" },
+  ],
+  careerResources: [
+    { title: "Resume Review Service",       desc: "Get your CV reviewed by career advisors.",               iconName: "GraduationCap", color: "#8b5cf6" },
+    { title: "Mock Interview Sessions",     desc: "Practice with industry professionals every Friday.",     iconName: "User",          color: "#3b82f6" },
+    { title: "LinkedIn Profile Workshop",   desc: "Optimize your LinkedIn with HR expert guidance.",        iconName: "Star",          color: "#d97706" },
+    { title: "Industry Connect Events",     desc: "Networking events with top companies each semester.",    iconName: "Building",      color: "#10b981" },
+  ],
+  teacherSyllabus: [
+    { code: "CS301", name: "Data Structures & Algorithms",  semester: "Semester 3", updated: "Feb 2026", addedBy: "Dr. Ahmed Rahman", status: "approved" },
+    { code: "CS302", name: "Database Management Systems",   semester: "Semester 3", updated: "Jan 2026", addedBy: "Dr. Ahmed Rahman", status: "approved" },
+  ],
+  classSchedule: [
+    { course: "CS301", day: "Sunday",  time: "8:00 AM – 9:30 AM",   room: "Room 101", teacher: "Dr. Ahmed Rahman", status: "approved" },
+    { course: "CS302", day: "Monday",  time: "10:00 AM – 11:30 AM", room: "Room 202", teacher: "Dr. Ahmed Rahman", status: "approved" },
+    { course: "CS401", day: "Tuesday", time: "1:00 PM – 2:30 PM",   room: "Lab 3",    teacher: "Prof. Nadia Islam", status: "approved" },
+  ],
+  teacherBooks: [
+    { title: "Introduction to Algorithms", author: "CLRS",             available: true,  copies: 3, addedBy: "Dr. Ahmed Rahman", status: "approved" },
+    { title: "Clean Code",                 author: "Robert C. Martin", available: false, copies: 2, addedBy: "Dr. Ahmed Rahman", status: "approved" },
+  ],
+  examResults: [
+    { student: "Rahim Hossain", studentId: "CS-2021-001", course: "CS301", grade: "A+", marks: 95, semester: "Spring 2026", addedBy: "Dr. Ahmed Rahman", status: "approved" },
+    { student: "Fatema Begum",  studentId: "CS-2021-002", course: "CS301", grade: "A",  marks: 88, semester: "Spring 2026", addedBy: "Dr. Ahmed Rahman", status: "approved" },
+    { student: "Karim Uddin",   studentId: "CS-2021-003", course: "CS302", grade: "B+", marks: 78, semester: "Spring 2026", addedBy: "Dr. Ahmed Rahman", status: "approved" },
+  ],
+  teacherNotices: [
+    { title: "Mid-term syllabus coverage", body: "Chapters 1-5 will be covered in the mid-term exam.", addedBy: "Dr. Ahmed Rahman", date: "Apr 28, 2026", status: "approved" },
+  ],
+  teacherMaterials: [
+    { title: "Lecture 1 - Intro to DSA", description: "Slides for first class", url: "https://drive.google.com/example", course: "CS301", type: "Slides", addedBy: "Dr. Ahmed Rahman", date: "Apr 20, 2026", status: "approved" },
+  ],
+};
+
+module.exports = { SEED };
