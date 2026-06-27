@@ -9,8 +9,9 @@ const db = client.db();
 
 const connectDb = async () => {
     try {
+
         await client.connect();
-        console.log("Connected to MongoDB via Database connection module");
+        console.log("Connected to MongoDB via Database connection yeah module");
     } catch (error) {
         console.error("Failed to connect to MongoDB", error);
     }
