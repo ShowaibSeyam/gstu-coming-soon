@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 const path = require("path");
 
 // Load .env from backend directory
-require("dotenv").config({ path: path.resolve(__dirname, "../backend/.env") });
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const client = new MongoClient(process.env.MONGO_URI);
 const db = client.db();
